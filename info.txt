@@ -73,6 +73,7 @@ const NoteItem = ({ note, deleteNote }) => {
   );
 };
 
+
 => NoteList.js : 
 const NoteList = ({ notes, editNote, deleteNote }) => {
     return (
@@ -116,23 +117,30 @@ const EditNotePage = ({ notes, editNote }) => {
 
   return (
     <div className="edit-note-page">
-      <h1>Edit Note</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Note title"
-          required
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Note content"
-          required
-        />
-        <button type="submit">Save Changes</button>
-      </form>
+      <h1>Edit Your Note</h1>
+      <div className="note-container">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="note-title-input"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Note Title"
+            required
+          />
+          <textarea
+            className="note-content-textarea"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="Note Content"
+            required
+          />
+          <div className="button-group">
+            <button type="submit" className="save-button">Save Changes</button>
+            <button type="button" className="cancel-button" onClick={() => navigate('/')}>Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
