@@ -1,0 +1,99 @@
+body, input, button, textarea {
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  margin: 20px;
+  padding: 20px;
+  background-color: #e6e6e6; /* Light pink background */
+  border-radius: 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between title and button */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 20px; /* Space below the header */
+}
+
+
+.new-note-button {
+  background-color: #ff4b5c; /* Reddish button */
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px; /* Adjusted padding for better appearance */
+  border-radius: 30px; /* Rounded button */
+  cursor: pointer;
+  font-size: 18px; /* Slightly larger font size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Transition for hover effect */
+}
+.new-note-button:hover {
+  background-color: #ff1a3d; /* Darker reddish color on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+}
+.new-note-button:focus {
+  outline: none; /* Remove focus outline */
+  box-shadow: 0 0 0 3px rgba(255, 75, 92, 0.5); /* Focus outline with a glow effect */
+}
+.notes-container {
+  display: flex; /* Flex container for layout */
+  justify-content: space-between; /* Space between items */
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 20px; /* Space below the notes container */
+}
+
+.note-list {
+  display: flex; /* Flex container for horizontal alignment */
+  flex-wrap: wrap; /* Allow wrapping to the next line */
+  gap: 15px; /* Space between items */
+  flex: 1; /* Allow note list to take available space */
+}
+
+.note-item {
+  background-color: #ffffff; /* White note card */
+  border: 1px solid #ffccd5; /* Light reddish border */
+  padding: 15px; /* Padding inside the note */
+  border-radius: 16px; /* Rounded note card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  transition: transform 0.2s, box-shadow 0.2s; /* Transition for hover effect */
+  flex: 1 1 calc(25% - 15px); /* Flex property to allow 4 items per row with gap consideration */
+  max-width: calc(25% - 15px); /* Ensures that no item exceeds 25% of the row */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.note-item:hover {
+  transform: scale(1.02); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+
+input[type="text"], textarea {
+  padding: 10px;
+  margin-bottom: 15px; /* Increase margin for better spacing */
+  border: 1px solid #ffccd5; /* Light reddish border */
+  border-radius: 4px;
+  width: calc(100% - 20px); /* Adjusted width to fit better */
+  background-color: #ffe6f0; /* Light pink input background */
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  align-self: flex-end;
+  background-color: #ff4b5c; /* Reddish button */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px; /* Rounded button */
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+
