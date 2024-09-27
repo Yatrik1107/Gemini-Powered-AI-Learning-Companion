@@ -50,23 +50,29 @@ const NewNoteForm = ({ onSave }) => {
 
 => NoteItem.js:
 
-const NoteItem = ({ note, editNote, deleteNote }) => {
-    const handleEdit = () => {
-      const updatedContent = prompt("Edit your note", note.content);
-      if (updatedContent) {
-        editNote(note.id, { content: updatedContent });
-      }
-    };
-  
-    return (
-      <div className="note-item">
-        <h2>{note.title}</h2>
-        <p>{note.content}</p>
-        <button onClick={handleEdit}>Edit</button>
-        <button onClick={() => deleteNote(note.id)}>Delete</button>
+const NoteItem = ({ note, deleteNote }) => {
+  const navigate = useNavigate();
+  const date = new Date(note.date).toLocaleDateString();
+  const time = new Date(note.date).toLocaleTimeString();
+
+  const handleEdit = () => {
+    navigate(`/edit/${note.id}`);
+  };
+
+  return (
+    <div className="note-item">
+      <h2>{note.title}</h2>
+      <p>{note.content.substring(0, 100)}...</p> {/* Show first few lines of content */}
+      <div className="note-footer">
+        <span>{date}</span>
+        <span>{time}</span>
       </div>
-    );
+      <button onClick={handleEdit}>Edit</button>
+      <button onClick={() => deleteNote(note.id)}>Delete</button>
+    </div>
+  );
 };
+
 => NoteList.js : 
 const NoteList = ({ notes, editNote, deleteNote }) => {
     return (
@@ -93,6 +99,44 @@ const SearchBar = ({ searchQuery, handleSearch }) => (
     />
   );
 
+=> EditNotePage.js:
+
+const EditNotePage = ({ notes, editNote }) => {
+  const { id } = useParams();
+  const note = notes.find(note => note.id === parseInt(id));
+  const [title, setTitle] = useState(note.title);
+  const [content, setContent] = useState(note.content);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    editNote(note.id, { title, content });
+    navigate('/');
+  };
+
+  return (
+    <div className="edit-note-page">
+      <h1>Edit Note</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Note title"
+          required
+        />
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Note content"
+          required
+        />
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  );
+};
+
   
 => app.js:
 
@@ -101,7 +145,7 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const addNote = (note) => {
-    setNotes([...notes, { ...note, id: Date.now() }]);
+    setNotes([...notes, { ...note, id: Date.now(), date: new Date() }]);
   };
 
   const editNote = (id, updatedNote) => {
@@ -122,14 +166,22 @@ const App = () => {
   );
 
   return (
-    <div className="app">
-      <Header onNewNoteClick={() => addNote({ title: "New Note", content: "Note content" })} />
-      <SearchBar searchQuery={searchQuery} handleSearch={handleSearch} />
-      <div className="notes-container">
-        <NoteList notes={filteredNotes} editNote={editNote} deleteNote={deleteNote} />
+    <Router>
+      <div className="app">
+        <Header onNewNoteClick={() => addNote({ title: "New Note", content: "Note content" })} />
+        <SearchBar searchQuery={searchQuery} handleSearch={handleSearch} />
+        <Routes>
+          <Route 
+            path="/" 
+            element={<NoteList notes={filteredNotes} editNote={editNote} deleteNote={deleteNote} />} 
+          />
+          <Route 
+            path="/edit/:id" 
+            element={<EditNotePage notes={notes} editNote={editNote} />} 
+          />
+        </Routes>
+        {/* <NewNoteButton onClick={() => addNote({ title: "New Note", content: "Note content" })} /> */}
       </div>
-    </div>
+    </Router>
   );
 };
-
-

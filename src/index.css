@@ -52,17 +52,27 @@ body, input, button, textarea {
 }
 
 .note-item {
-  background-color: #ffffff; /* White note card */
-  border: 1px solid #ffccd5; /* Light reddish border */
-  padding: 15px; /* Padding inside the note */
-  border-radius: 16px; /* Rounded note card */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-  transition: transform 0.2s, box-shadow 0.2s; /* Transition for hover effect */
-  flex: 1 1 calc(25% - 15px); /* Flex property to allow 4 items per row with gap consideration */
-  max-width: calc(25% - 15px); /* Ensures that no item exceeds 25% of the row */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  background-color: #ffffff;
+  border: 1px solid #ffccd5;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1 1 calc(25% - 15px);
+  max-width: calc(25% - 15px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+}
 .note-item:hover {
   transform: scale(1.02); /* Slightly enlarge on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
