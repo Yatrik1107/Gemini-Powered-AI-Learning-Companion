@@ -52,23 +52,34 @@ const NewNoteForm = ({ onSave }) => {
 
 const NoteItem = ({ note, deleteNote }) => {
   const navigate = useNavigate();
-  const date = new Date(note.date).toLocaleDateString();
-  const time = new Date(note.date).toLocaleTimeString();
+  
+  // Format date and time
+  const formattedDate = new Date(note.date).toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+  const formattedTime = new Date(note.date).toLocaleTimeString('en-US', {
+    hour: '2-digit', minute: '2-digit'
+  });
 
+  // Navigate to edit page
   const handleEdit = () => {
     navigate(`/edit/${note.id}`);
   };
 
   return (
     <div className="note-item">
-      <h2>{note.title}</h2>
+      <div className="note-header">
+        <h2>{note.title}</h2>
+        <div className="note-actions">
+          <FaPencilAlt className="icon edit-icon" onClick={handleEdit} />
+          <FaTrash className="icon delete-icon" onClick={() => deleteNote(note.id)} />
+        </div>
+      </div>
       <p>{note.content.substring(0, 100)}...</p> {/* Show first few lines of content */}
       <div className="note-footer">
-        <span>{date}</span>
-        <span>{time}</span>
+        <span>{formattedDate}</span>
+        <span>{formattedTime}</span>
       </div>
-      <button onClick={handleEdit}>Edit</button>
-      <button onClick={() => deleteNote(note.id)}>Delete</button>
     </div>
   );
 };
@@ -193,3 +204,9 @@ const App = () => {
     </Router>
   );
 };
+
+=> above is the code app structure of my react app and you have to incorporate the below functionality : 
+(1) Note Card should have below changes : 
+    (i) put the pencil Icon instead of edit button and dustbin icon instead of delete button.
+    (ii) put both the changed button on the same line button right align in header line!
+    (iii) date and time should be displayed in little improved format!

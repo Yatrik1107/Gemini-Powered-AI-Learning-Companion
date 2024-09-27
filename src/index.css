@@ -1,3 +1,4 @@
+/* Global Styles */
 body, input, button, textarea {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -7,6 +8,7 @@ body, input, button, textarea {
   line-height: 1.5;
 }
 
+/* App Container Styles */
 .app {
   margin: 40px auto;
   padding: 30px;
@@ -17,6 +19,7 @@ body, input, button, textarea {
   box-sizing: border-box;
 }
 
+/* Input, Textarea, and Button Styles */
 input, textarea {
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -41,50 +44,55 @@ button:hover {
   background-color: #ff6b7d;
 }
 
-
-
+/* Header Styles */
 .header {
   display: flex;
-  justify-content: space-between; /* Space between title and button */
-  align-items: center; /* Center items vertically */
-  margin-bottom: 20px; /* Space below the header */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-
+/* New Note Button Styles */
 .new-note-button {
-  background-color: #ff4b5c; /* Reddish button */
+  background-color: #ff4b5c;
   color: #ffffff;
   border: none;
-  padding: 12px 24px; /* Adjusted padding for better appearance */
-  border-radius: 30px; /* Rounded button */
+  padding: 12px 24px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 18px; /* Slightly larger font size */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Transition for hover effect */
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
+
 .new-note-button:hover {
-  background-color: #ff1a3d; /* Darker reddish color on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+  background-color: #ff1a3d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+
 .new-note-button:focus {
-  outline: none; /* Remove focus outline */
-  box-shadow: 0 0 0 3px rgba(255, 75, 92, 0.5); /* Focus outline with a glow effect */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 75, 92, 0.5);
 }
+
+/* Notes Container Styles */
 .notes-container {
-  display: flex; /* Flex container for layout */
-  justify-content: space-between; /* Space between items */
-  align-items: flex-start; /* Align items to the top */
-  margin-bottom: 20px; /* Space below the notes container */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
+/* Note List Styles */
 .note-list {
-  display: flex; /* Flex container for horizontal alignment */
-  flex-wrap: wrap; /* Allow wrapping to the next line */
-  gap: 15px; /* Space between items */
-  flex: 1; /* Allow note list to take available space */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  flex: 1;
 }
 
+/* Note Item Styles */
 .note-item {
   background-color: #ffffff;
   border: 1px solid #ffccd5;
@@ -98,6 +106,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .note-footer {
@@ -107,22 +116,27 @@ button:hover {
   font-size: 12px;
   color: #888;
 }
-.note-item:hover {
-  transform: scale(1.02); /* Slightly enlarge on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+
+.note-footer span {
+  display: block;
 }
 
+.note-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
+/* Input and Textarea Styles (Specific) */
 input[type="text"], textarea {
   padding: 10px;
-  margin-bottom: 15px; /* Increase margin for better spacing */
-  border: 1px solid #ffccd5; /* Light reddish border */
+  margin-bottom: 15px;
+  border: 1px solid #ffccd5;
   border-radius: 4px;
-  width: calc(100% - 20px); /* Adjusted width to fit better */
-  background-color: #ffe6f0; /* Light pink input background */
+  width: calc(100% - 20px);
+  background-color: #ffe6f0;
 }
 
-
+/* Form Styles */
 form {
   display: flex;
   flex-direction: column;
@@ -130,17 +144,16 @@ form {
 
 form button {
   align-self: flex-end;
-  background-color: #ff4b5c; /* Reddish button */
+  background-color: #ff4b5c;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
-  border-radius: 50px; /* Rounded button */
+  border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
 }
 
-
-
+/* Edit Note Page Styles */
 .edit-note-page {
   max-width: 800px;
   margin: 50px auto;
@@ -150,17 +163,20 @@ form button {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Heading Styles */
 h1 {
   font-size: 24px;
   color: #333;
   text-align: center;
 }
 
+/* Note Container Styles */
 .note-container {
   display: flex;
   flex-direction: column;
 }
 
+/* Note Title Input Styles */
 .note-title-input {
   font-size: 22px;
   font-weight: bold;
@@ -173,6 +189,7 @@ h1 {
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Note Content Textarea Styles */
 .note-content-textarea {
   font-size: 16px;
   padding: 12px;
@@ -185,12 +202,14 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Button Group Styles */
 .button-group {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
+/* Save and Cancel Button Styles */
 .save-button, .cancel-button {
   background-color: #ff4b5c;
   color: white;
@@ -205,5 +224,20 @@ h1 {
   background-color: #ff6b7d;
 }
 
+/* Note Header Styles */
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+/* Note Actions Styles */
+.note-actions {
+  display: flex;
+  gap: 10px;
+}
 
+/* Icon Hover Styles */
+.icon:hover {
+  color: #ff4b5c;
+}
