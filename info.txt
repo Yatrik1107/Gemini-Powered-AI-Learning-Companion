@@ -224,4 +224,3 @@ const App = () => {
 };
 
 => above is the code app structure of my react app.
-
