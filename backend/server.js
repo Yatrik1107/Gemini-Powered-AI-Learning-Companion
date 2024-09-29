@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios');
-require('dotenv').config(); // Loads environment variables from .env file
+const dotenv = require("dotenv");
+
+dotenv.config(); // Loads environment variables from .env file
 
 const app = express();
 const port = process.env.PORT || 3000;

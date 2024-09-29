@@ -7,15 +7,16 @@ const App = () => {
     const [note, setNote] = useState('');
     const [notes, setNotes] = useState([]);
 
-    // Fetch video details
     const fetchVideoDetails = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/video', { videoId });
-            setVideoDetails(response.data);
+          console.log("Fetching video details..."); // Add this log to see if it's called
+          const response = await axios.post('http://localhost:5000/api/video', { videoId });
+          setVideoDetails(response.data);
+          console.log("Video details fetched:", response.data); // Add this log to see the response
         } catch (error) {
-            console.error('Error fetching video details', error);
+          console.error('Error fetching video details', error);
         }
-    };
+      };
 
     // Add note
     const addNote = async () => {
