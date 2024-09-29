@@ -1,67 +1,78 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import NoteList from './components/NoteList';
-import NewNoteButton from './components/NewNoteButton';
-import EditNotePage from './components/EditNotePage'; // New component for editing notes
-
-const AppContent = () => {
-  const [notes, setNotes] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const location = useLocation(); // Moved inside the Router context
-
-  const addNote = (note) => {
-    setNotes([...notes, { ...note, id: Date.now(), date: new Date() }]);
-  };
-
-  const editNote = (id, updatedNote) => {
-    setNotes(notes.map(note => note.id === id ? { ...note, ...updatedNote } : note));
-  };
-
-  const deleteNote = (id) => {
-    setNotes(notes.filter(note => note.id !== id));
-  };
-
-  const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const filteredNotes = notes.filter(note => 
-    note.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    note.content.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  return (
-    <div className="app">
-      {/* Conditionally show Header and SearchBar only on the main page */}
-      {location.pathname === '/' && (
-        <>
-          <Header onNewNoteClick={() => addNote({ title: "New Note", content: "Note content" })} />
-          <SearchBar searchQuery={searchQuery} handleSearch={handleSearch} />
-        </>
-      )}
-      
-      <Routes>
-        <Route 
-          path="/" 
-          element={<NoteList notes={filteredNotes} editNote={editNote} deleteNote={deleteNote} />} 
-        />
-        <Route 
-          path="/edit/:id" 
-          element={<EditNotePage notes={notes} editNote={editNote} />} 
-        />
-      </Routes>
-    </div>
-  );
-};
+import axios from 'axios';
 
 const App = () => {
-  return (
-    <Router>
-      <AppContent /> {/* App logic inside Router */}
-    </Router>
-  );
+    const [videoId, setVideoId] = useState('');
+    const [videoDetails, setVideoDetails] = useState(null);
+    const [note, setNote] = useState('');
+    const [notes, setNotes] = useState([]);
+
+    // Fetch video details
+    const fetchVideoDetails = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/video', { videoId });
+            setVideoDetails(response.data);
+        } catch (error) {
+            console.error('Error fetching video details', error);
+        }
+    };
+
+    // Add note
+    const addNote = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/notes', { videoId, note });
+            setNotes(response.data.notes);
+            setNote('');
+        } catch (error) {
+            console.error('Error adding note', error);
+        }
+    };
+
+    return (
+        <div>
+            <h1>Learning Website</h1>
+            <input 
+                type="text" 
+                placeholder="Enter YouTube Video ID" 
+                value={videoId} 
+                onChange={e => setVideoId(e.target.value)} 
+            />
+            <button onClick={fetchVideoDetails}>Fetch Video</button>
+
+            {videoDetails && (
+                <div>
+                    <h2>{videoDetails.title}</h2>
+                    <p>{videoDetails.description}</p>
+                    <div>
+                        <h3>Video Player</h3>
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src={`https://www.youtube.com/embed/${videoId}`} 
+                            title="YouTube video player" 
+                            allowFullScreen 
+                        ></iframe>
+                    </div>
+                    <div>
+                        <h3>Add Note</h3>
+                        <textarea 
+                            value={note} 
+                            onChange={e => setNote(e.target.value)} 
+                        />
+                        <button onClick={addNote}>Add Note</button>
+                    </div>
+                    <div>
+                        <h3>Notes</h3>
+                        <ul>
+                            {notes.map((note, index) => (
+                                <li key={index}>{note}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default App;
