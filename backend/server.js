@@ -1,71 +1,64 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios');
-const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config(); // Loads environment variables from .env file
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const port = process.env.PORT || 3000;
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error(err));
+// MongoDB Connection
+const dbURI = process.env.MONGO_URI;
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-// Video Schema and Model
+// YouTube Video Schema
 const videoSchema = new mongoose.Schema({
-    videoId: String,
-    title: String,
-    description: String,
-    notes: [String],
-    topics: [String]
+  url: { type: String, required: true },
+  title: String,
+  description: String,
+  topics: [String],
 });
+
 const Video = mongoose.model('Video', videoSchema);
 
-// Route to fetch video details from YouTube API
-app.post('/api/video', async (req, res) => {
-    const { videoId } = req.body;
-    const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+// Fetch Video Details from YouTube API
+async function fetchVideoDetails(videoId) {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`;
 
-    try {
-        const videoResponse = await axios.get(
-            `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${YOUTUBE_API_KEY}`
-        );
+  try {
+    const response = await axios.get(url);
+    const videoDetails = response.data.items[0].snippet;
+    return videoDetails;
+  } catch (error) {
+    console.error('Error fetching video details:', error);
+  }
+}
 
-        const videoData = videoResponse.data.items[0].snippet;
-        const video = new Video({
-            videoId,
-            title: videoData.title,
-            description: videoData.description,
-            notes: [],
-            topics: []  // Topic extraction can be added here
-        });
+// Route to Add YouTube Video to Database
+app.post('/add-video', async (req, res) => {
+  const videoId = req.body.videoId; // Assume videoId is extracted from the frontend
 
-        await video.save();
-        res.json(video);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch video details' });
-    }
+  try {
+    const videoDetails = await fetchVideoDetails(videoId);
+    
+    // Save video to database
+    const newVideo = new Video({
+      url: `https://www.youtube.com/watch?v=${videoId}`,
+      title: videoDetails.title,
+      description: videoDetails.description,
+      topics: [], // You can parse topics based on video description or use another API
+    });
+
+    await newVideo.save();
+    res.status(200).json({ message: 'Video added successfully', video: newVideo });
+  } catch (error) {
+    res.status(500).json({ message: 'Error adding video', error });
+  }
 });
 
-// Route to add notes to a video
-app.post('/api/notes', async (req, res) => {
-    const { videoId, note } = req.body;
-    try {
-        const video = await Video.findOne({ videoId });
-        if (video) {
-            video.notes.push(note);
-            await video.save();
-            res.json(video);
-        } else {
-            res.status(404).json({ error: 'Video not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to add note' });
-    }
+// Start the Server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
-
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
