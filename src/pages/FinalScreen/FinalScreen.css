@@ -1,0 +1,73 @@
+
+
+.result h2{
+    text-align: center;
+}
+
+.qnaTable{
+    max-width: 1080px;
+    margin: 10px auto;
+    padding: 20px 40px;
+    border: 2px solid #d4d4d5;
+    border-radius: 5px;
+
+    font-size: 20px;
+}
+
+@media screen and (max-width:600px) {
+    .scroll{
+        max-width: 600px;
+        overflow-y: hidden;
+        overflow-x: auto;
+
+        padding: 5px;
+    }
+    .qnaTable{
+        width: 700px;
+        margin-bottom: 0;
+        max-width: none;
+
+        border-radius: 5px;
+    }
+}
+
+.qnaTable thead, tr{
+    height:60px;
+}
+
+.btns{
+    display: flex;
+}
+
+.btns button{
+    /* width: 100%; */
+    margin: 16px auto;
+    padding: 10px 24px;
+    
+    /* border: 2px solid black; */
+    border: none;
+    color: white;
+    border-radius:5px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.5s;
+}
+
+.btns .playAgain{
+    background-color:#3dd1ca;
+}
+.btns .playAgain:hover{
+    background-color: #00b5ad;
+    cursor: pointer;
+}
+
+.btns .backToHome{
+    background-color: rgb(46, 174, 217);
+}
+.btns .backToHome:hover{
+    background-color: rgb(77, 122, 149);
+    cursor: pointer;
+}
+.btns button:active{
+    transform: scale(1.1);
+}

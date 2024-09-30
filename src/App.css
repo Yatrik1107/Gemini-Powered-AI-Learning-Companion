@@ -1,74 +1,9 @@
-body, input, button, textarea {
-  font-family: Arial, sans-serif;
-}
-
-.app {
-  margin: 20px;
-  padding: 20px;
-  background-color: #ffe6f0; /* Light pink background */
-  border-radius: 8px;
-}
-
-.header {
+.App h1{
+  text-align: center;
+  margin: 0;
+  background: lightblue;
+  height: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-}
-
-.new-note-button {
-  background-color: #ff4b5c; /* Reddish button */
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px; /* Rounded button */
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.note-item {
-  background-color: #ffffff; /* White note card */
-  border: 1px solid #ffccd5; /* Light reddish border */
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 16px; /* Rounded note card */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for better visibility */
-}
-
-.note-list {
-  margin-top: 20px;
-}
-
-input[type="text"] {
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ffccd5; /* Light reddish border */
-  border-radius: 4px;
-  width: calc(100% - 16px);
-  background-color: #ffe6f0; /* Light pink input background */
-}
-
-textarea {
-  width: 100%;
-  height: 100px;
-  padding: 8px;
-  border: 1px solid #ffccd5; /* Light reddish border */
-  border-radius: 4px;
-  resize: none;
-  background-color: #ffe6f0; /* Light pink textarea background */
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form button {
-  align-self: flex-end;
-  background-color: #ff4b5c; /* Reddish button */
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px; /* Rounded button */
-  cursor: pointer;
-  font-size: 16px;
 }

@@ -1,0 +1,44 @@
+Quiz-App/
+  |--public/
+  |--src/
+  |   |--Axios/
+  |   |     |-->Axios.js
+  |   |--components/
+  |   |     |-->SelectField.css
+  |   |     |-->SelectField.js
+  |   |     |-->TextField.css
+  |   |     |-->TextField.js
+  |   |--pages/
+  |   |     |--FinalScreen/
+  |   |     |     |-->FinalScreen.css
+  |   |     |     |-->FinalScreen.js
+  |   |     |--Questions/
+  |   |     |     |-->Questions.css
+  |   |     |     |-->Questions.js
+  |   |     |--Settings/
+  |   |     |     |-->Settings.css
+  |   |     |     |-->Settings.js
+  |   |--useReducer/
+  |   |     |-->QuestionContext.js
+  |   |     |-->questionReducer.js
+  |   |-->App.js
+  |   |-->App.css
+  |   |-->index.js
+  |   |-->index.css
+  |   |-->... (other files)
+  |-- FileStructure.txt
+  |-- ...(other files)
+
+
+  ----------------------------------------------------API Response Formate------------------------------------------------------------------------
+  {
+    "response_code":0,
+    "results":[{
+      "category":"General Knowledge",
+      "type":"multiple",
+      "difficulty":"hard",
+      "question":"If someone said &quot;you are olid&quot;, what would they mean?",
+      "correct_answer":"You smell extremely unpleasant.",
+      "incorrect_answers":["You are out of shape\/weak.","Your appearance is repulsive.","You are incomprehensible\/an idiot."]
+    }]
+  }
