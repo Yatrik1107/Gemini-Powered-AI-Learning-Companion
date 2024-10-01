@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+}
+
+#loading {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#transcription-result {
+    margin-top: 20px;
+    white-space: pre-wrap; /* Preserve whitespace for transcription text */
+}
