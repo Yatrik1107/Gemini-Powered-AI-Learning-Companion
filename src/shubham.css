@@ -1,0 +1,83 @@
+body {
+    background-color: #f0f0f0; /* Change to light gray from gradient */
+    font-family: Arial, sans-serif; /* Use Arial for consistency */
+    color: #333;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  .video-wrapper {
+    background-color: #ffffff; /* Change from black to white */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reduce shadow */
+  }
+  .transcription,
+  .notes {
+    width: 45%;
+    background-color: #ffffff; /* Change from dark transparent to white */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ffccd5; /* Add border similar to notes */
+  }
+  textarea,
+  input,
+  button,
+  ul {
+    margin-top: 10px;
+    border-radius: 8px; /* Increase radius */
+    font-size: 1em;
+    padding: 10px;
+    background-color: #f9f9f9; /* Match input background color */
+    border: 1px solid #ccc; /* Light border */
+  }
+  
+  button {
+    background-color: #ff4b5c; /* Match button color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #ff6b7d;
+  }
+  h1 {
+    font-size: 24px;
+    color: #333; /* Plain color instead of gradient */
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form button {
+    align-self: flex-end;
+    background-color: #ff4b5c;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .transcription-notes-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Add gap for spacing */
+    margin-top: 30px;
+  }
+  

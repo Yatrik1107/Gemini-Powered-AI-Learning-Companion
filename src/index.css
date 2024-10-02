@@ -1,0 +1,346 @@
+/* Global Styles */
+body, input, button, textarea {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* App Container Styles */
+.app {
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+/* Input, Textarea, and Button Styles */
+input, textarea {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+button {
+  background-color: #ff4b5c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff6b7d;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* New Note Button Styles */
+.new-note-button {
+  background-color: #ff4b5c;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.new-note-button:hover {
+  background-color: #ff1a3d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.new-note-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 75, 92, 0.5);
+}
+
+/* Notes Container Styles */
+.notes-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Note List Styles */
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  flex: 1;
+}
+
+/* Note Item Styles */
+.note-item {
+  background-color: #ffffff;
+  border: 1px solid #ffccd5;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1 1 calc(25% - 15px);
+  max-width: calc(25% - 15px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+.note-footer span {
+  display: block;
+}
+
+.note-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Input and Textarea Styles (Specific) */
+input[type="text"], textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ffccd5;
+  border-radius: 4px;
+  width: calc(100% - 20px);
+  background-color: #ffe6f0;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  align-self: flex-end;
+  background-color: #ff4b5c;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Edit Note Page Styles */
+.edit-note-page {
+  /* max-width: 800px; */
+  border: 2px solid red;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+h1 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+/* Note Container Styles */
+.note-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Note Title Input Styles */
+.note-title-input {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: none;
+  background-color: #f3f3f3;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Note Content Textarea Styles */
+.note-content-textarea {
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  background-color: #f3f3f3;
+  min-height: 250px;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Button Group Styles */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Save and Cancel Button Styles */
+.save-button, .cancel-button {
+  background-color: #ff4b5c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover, .cancel-button:hover {
+  background-color: #ff6b7d;
+}
+
+/* Note Header Styles */
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Note Actions Styles */
+.note-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Icon Hover Styles */
+.icon:hover {
+  color: #ff4b5c;
+}
+
+/* Edit Note Page Styles */
+.edit-note-page {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 40px; /* Increased padding for more content space */
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-height: 600px; /* Ensure the content area has sufficient height */
+  width: 100%; /* Ensure it fills the outer gray container */
+}
+
+/* Note Container Styles */
+.note-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f9f9f9; /* Grayish background to match outer container */
+  padding: 20px;
+  border-radius: 12px; /* Inner padding increased for better spacing */
+}
+
+/* Note Title Input Styles */
+.note-title-input {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 16px; /* Increased padding for better sizing */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Note Content Textarea (ReactQuill Editor) Styles */
+.note-content-editor {
+  min-height: 350px; /* Increased height to expand white space */
+  border-radius: 10px;
+  background-color: #ffffff; /* Ensure background stays white */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 12px; /* Add padding to make it feel more spacious */
+  font-size: 16px;
+  border: 1px solid #ddd;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-content-editor .ql-container {
+  border-radius: 10px;
+  background-color: #fff; /* Match white background for editor content */
+  min-height: 300px;
+}
+
+.note-content-editor .ql-toolbar {
+  background-color: #f3f3f3;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.note-content-editor .ql-editor {
+  background-color: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Button Group Styles */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+/* Save and Cancel Button Styles */
+.save-button, .cancel-button {
+  background-color: #ff4b5c;
+  color: #ffffff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(255, 75, 92, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.save-button:hover, .cancel-button:hover {
+  background-color: #ff6b7d;
+  box-shadow: 0px 6px 15px rgba(255, 75, 92, 0.3);
+}
+
+.cancel-button {
+  background-color: #ccc;
+}
+
+.cancel-button:hover {
+  background-color: #aaa;
+}
